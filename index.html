@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <h1>Guess what letter im thinking of</h1>
+    <br>
+    <br>
+    <div id="playerWins"></div>
+    <br>
+    <div id="playerLoses"></div>
+    <br>
+    <div id="guessesLeft"></div>
+    <br>
+    <div id="guessesArray"></div>
+    <script>
+
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        var playerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        var gArray = [];
+
+        var wins = 0;
+        var loses = 0;
+        var guesses = 9;
+
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+
+            document.onkeyup = function (event) {
+                var userGuess = event.key;
+                console.log("a guess");
+
+                
+
+                if (userGuess.indexof === -1) {
+                    return;
+                    console.log("invalid");
+                }
+
+                if (userGuess.indexof !== -1) {
+                    return;
+                    console.log("also invalid");
+                }
+                if (userGuess === computerGuess) {
+                    wins++;
+                    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+       gArray = [];
+       console.log("win");
+                } else {
+                    guesses--;
+                }
+                if (guesses <1) {
+                    loses++;
+                    gArray = [];
+                    guesses = 9;
+                    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+       gArray = [];
+       console.log("lose");
+                }
+var userGuess = gArray.join(", ");
+console.log("join guesses");
+            };
+
+
+        document.getElementById("playerWins").innerHTML = "playerWins: " + wins;
+        document.getElementById("playerLoses").innerHTML = "playerLoses: " + loses;
+        document.getElementById("guessesLeft").innerHTML = "guessesLeft: " + guesses;
+        document.getElementById("guessesArray").innerHTML = "guessesArray: " + gArray;
+
+    </script>
+</body>
+
+</html>
